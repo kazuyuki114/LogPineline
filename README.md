@@ -48,6 +48,7 @@ Pre-configured Grafana dashboards are available in the `dashboard/` folder:
 - `CombinedDashboard.json` - Unified view of all logs
 - `Kafka.json` - Kafka metrics
 - `Clickhouse.json` - ClickHouse metrics
+- Template ID 882  & 7589 - Prometheus metrics
 
 ## Project Structure
 
