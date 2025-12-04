@@ -123,7 +123,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT ts,\n       sum(notice_count) AS notice,\n       sum(warn_count) AS warn,\n       sum(error_count) AS error,\n       sum(crit_count) AS crit,\n       sum(alert_count) AS alert,\n       sum(emerg_count) AS emerg\nFROM logs_db.apache_error_levels_per_minute\nGROUP BY ts\nORDER BY ts;\n",
+          "rawSql": "SELECT ts,        sum(notice_count) AS notice,        sum(warn_count) AS warn,        sum(error_count) AS error,        sum(crit_count) AS crit,        sum(alert_count) AS alert,        sum(emerg_count) AS emerg FROM logs_db.apache_error_levels_per_minute GROUP BY ts ORDER BY ts; ",
           "refId": "A"
         }
       ],
@@ -232,7 +232,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT ts, sum(error_count) AS error_count\nFROM logs_db.apache_errors_per_minute\nGROUP BY ts\nORDER BY ts;\n",
+          "rawSql": "SELECT ts, sum(error_count) AS error_count FROM logs_db.apache_errors_per_minute GROUP BY ts ORDER BY ts; ",
           "refId": "A"
         }
       ],
@@ -338,7 +338,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT module, count(*) AS hits\nFROM logs_db.apache_error_logs\nGROUP BY module\nORDER BY hits DESC\nLIMIT 5;\n",
+          "rawSql": "SELECT module, count(*) AS hits FROM logs_db.apache_error_logs GROUP BY module ORDER BY hits DESC LIMIT 5; ",
           "refId": "A"
         }
       ],
@@ -414,7 +414,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT pid, count(*) AS hits\nFROM logs_db.apache_error_logs\nGROUP BY pid\nORDER BY hits DESC\nLIMIT 10;\n",
+          "rawSql": "SELECT pid, count(*) AS hits FROM logs_db.apache_error_logs GROUP BY pid ORDER BY hits DESC LIMIT 10; ",
           "refId": "A"
         }
       ],
@@ -509,7 +509,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT *\nFROM logs_db.apache_error_logs\nWHERE error_message ILIKE '%ssl%'\nORDER BY timestamp DESC\nLIMIT 10;\n",
+          "rawSql": "SELECT * FROM logs_db.apache_error_logs WHERE error_message ILIKE '%ssl%' ORDER BY timestamp DESC LIMIT 10; ",
           "refId": "A"
         }
       ],

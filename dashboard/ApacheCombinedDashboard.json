@@ -136,7 +136,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT\n    ts,\n    sumIf(hits, status BETWEEN 200 AND 299) AS s2xx,\n    sumIf(hits, status BETWEEN 300 AND 399) AS s3xx,\n    sumIf(hits, status BETWEEN 400 AND 499) AS s4xx,\n    sumIf(hits, status BETWEEN 500 AND 599) AS s5xx\nFROM logs_db.apache_status_per_minute\nGROUP BY ts\nORDER BY ts;\n",
+          "rawSql": "SELECT     ts,     sumIf(hits, status BETWEEN 200 AND 299) AS s2xx,     sumIf(hits, status BETWEEN 300 AND 399) AS s3xx,     sumIf(hits, status BETWEEN 400 AND 499) AS s4xx,     sumIf(hits, status BETWEEN 500 AND 599) AS s5xx FROM logs_db.apache_status_per_minute GROUP BY ts ORDER BY ts; ",
           "refId": "A"
         }
       ],
@@ -245,7 +245,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT ts, sum(hits)\nFROM logs_db.apache_hits_per_minute\nGROUP BY ts\nORDER BY ts;\n",
+          "rawSql": "SELECT ts, sum(hits) FROM logs_db.apache_hits_per_minute GROUP BY ts ORDER BY ts; ",
           "refId": "A"
         }
       ],
@@ -339,7 +339,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT method, count(*) AS hits\nFROM logs_db.apache_access_logs\nGROUP BY method\nORDER BY hits DESC;\n",
+          "rawSql": "SELECT method, count(*) AS hits FROM logs_db.apache_access_logs GROUP BY method ORDER BY hits DESC; ",
           "refId": "A"
         }
       ],
@@ -457,7 +457,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT\n    ts,\n    avgMerge(avg_state) AS avg_size,\n    quantileMerge(0.95)(p95_state) AS p95_size\nFROM logs_db.apache_response_size_per_minute\nGROUP BY ts\nORDER BY ts;\n",
+          "rawSql": "SELECT     ts,     avgMerge(avg_state) AS avg_size,     quantileMerge(0.95)(p95_state) AS p95_size FROM logs_db.apache_response_size_per_minute GROUP BY ts ORDER BY ts; ",
           "refId": "A"
         }
       ],
@@ -563,7 +563,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT\n    path,\n    avg(size) AS avg_response_size\nFROM logs_db.apache_access_logs\nGROUP BY path\nORDER BY avg_response_size DESC\nLIMIT 5;\n",
+          "rawSql": "SELECT     path,     avg(size) AS avg_response_size FROM logs_db.apache_access_logs GROUP BY path ORDER BY avg_response_size DESC LIMIT 5; ",
           "refId": "A"
         }
       ],
@@ -681,7 +681,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT path, count(*) AS hits\nFROM logs_db.apache_access_logs\nGROUP BY path\nORDER BY hits DESC\nLIMIT 15;\n",
+          "rawSql": "SELECT path, count(*) AS hits FROM logs_db.apache_access_logs GROUP BY path ORDER BY hits DESC LIMIT 15; ",
           "refId": "A"
         }
       ],

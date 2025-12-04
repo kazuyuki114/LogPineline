@@ -72,6 +72,12 @@ services:
     extends:
       file: ./clickhouse/docker-compose.yml
       service: clickhouse-exporter
+  clickhouse-mcp:
+    extends:
+      file: ./clickhouse_mcp/docker-compose.yml
+      service: mcp-clickhouse
+    depends_on:
+      - clickhouse
 
   # Prometheus
   prometheus:
@@ -89,6 +95,22 @@ services:
       service: grafana
     depends_on:
       - clickhouse
+  grafana-mcp:
+    extends:
+      file: ./grafana_mcp/docker-compose.yml
+      service: grafana-mcp
+    depends_on:
+      - grafana
+  
+  # N8N Workflow Automation
+  postgres-n8n:
+    extends: 
+      file: ./n8n/docker-compose.yml
+      service: postgres-n8n
+  n8n:
+    extends: 
+      file: ./n8n/docker-compose.yml
+      service: n8n  
 
 volumes:
   log-data:
@@ -96,3 +118,5 @@ volumes:
   clickhouse-data:
   prometheus_data:
   grafana-data:
+  postgres-data:
+  n8n-data:

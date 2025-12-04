@@ -123,7 +123,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT\n    minute,\n    requests\nFROM logs_db.json_1min_agg\nORDER BY minute;\n",
+          "rawSql": "SELECT     minute,     requests FROM logs_db.json_1min_agg ORDER BY minute; ",
           "refId": "A"
         }
       ],
@@ -232,7 +232,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT\n    minute,\n    bytes_avg\nFROM logs_db.json_1min_agg\nORDER BY minute;\n",
+          "rawSql": "SELECT     minute,     bytes_avg FROM logs_db.json_1min_agg ORDER BY minute; ",
           "refId": "A"
         }
       ],
@@ -337,7 +337,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT \n  request,\n  count(*) AS hits\nFROM logs_db.json_service_logs\nGROUP BY request\nORDER BY hits DESC\nLIMIT 10;\n",
+          "rawSql": "SELECT    request,   count(*) AS hits FROM logs_db.json_service_logs GROUP BY request ORDER BY hits DESC LIMIT 10; ",
           "refId": "A"
         }
       ],
@@ -418,7 +418,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT \n  method,\n  count(*) AS total\nFROM logs_db.json_service_logs\nGROUP BY method\nORDER BY total DESC;\n",
+          "rawSql": "SELECT    method,   count(*) AS total FROM logs_db.json_service_logs GROUP BY method ORDER BY total DESC; ",
           "refId": "A"
         }
       ],
@@ -497,7 +497,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT\n    count(*) AS total_logs,\n    countIf(status >= 500) AS server_errors,\n    countIf(status >= 400 AND status < 500) AS client_errors,\n    countIf(status BETWEEN 200 AND 299) AS successful,\n    uniqExact(host) AS unique_hosts\nFROM logs_db.json_service_logs;\n",
+          "rawSql": "SELECT     count(*) AS total_logs,     countIf(status >= 500) AS server_errors,     countIf(status >= 400 AND status < 500) AS client_errors,     countIf(status BETWEEN 200 AND 299) AS successful,     uniqExact(host) AS unique_hosts FROM logs_db.json_service_logs; ",
           "refId": "A"
         }
       ],
@@ -573,7 +573,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT \n  status,\n  count(*) AS total\nFROM logs_db.json_service_logs\nGROUP BY status\nORDER BY status;\n",
+          "rawSql": "SELECT    status,   count(*) AS total FROM logs_db.json_service_logs GROUP BY status ORDER BY status; ",
           "refId": "A"
         }
       ],
@@ -692,7 +692,7 @@
           },
           "pluginVersion": "4.11.2",
           "queryType": "table",
-          "rawSql": "SELECT \n  timestamp,\n  method,\n  status,\n  request,\n  host,\n  referer\nFROM logs_db.json_service_logs\nORDER BY timestamp DESC\nLIMIT 20;\n",
+          "rawSql": "SELECT    timestamp,   method,   status,   request,   host,   referer FROM logs_db.json_service_logs ORDER BY timestamp DESC LIMIT 20; ",
           "refId": "A"
         }
       ],
