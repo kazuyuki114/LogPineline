@@ -2,10 +2,10 @@ services:
   mcp-clickhouse:
     image: mcp/clickhouse:latest 
     container_name: mcp-clickhouse
+    ports:
+      - "8001:8001"
     env_file:
       - ../.env
-    ports:
-      - "8001:8000" 
     environment:
       CLICKHOUSE_HOST: clickhouse
       CLICKHOUSE_PORT: 8123
@@ -13,4 +13,5 @@ services:
       CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD}
       CLICKHOUSE_MCP_SERVER_TRANSPORT: sse 
       CLICKHOUSE_MCP_BIND_HOST: 0.0.0.0
+      CLICKHOUSE_MCP_BIND_PORT: 8001
       CLICKHOUSE_SECURE: false
