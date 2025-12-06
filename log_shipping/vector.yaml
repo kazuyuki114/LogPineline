@@ -6,7 +6,8 @@ sources:
       - "source-apache-access"
       - "source-apache-error"
       - "source-rfc3164-syslog"
-
+  internal_metrics:
+    type: "internal_metrics"
 transforms:
   parse_logs:
     inputs:
@@ -33,3 +34,8 @@ sinks:
       when_full: "block" 
     healthcheck:
       enabled: true
+  prometheus:
+    type: "prometheus_exporter"
+    inputs:
+      - "internal_metrics"
+    address: "0.0.0.0:8686"

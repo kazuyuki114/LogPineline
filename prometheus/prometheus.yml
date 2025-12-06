@@ -20,3 +20,13 @@ scrape_configs:
     basic_auth:
       username: '${GRAFANA_PROMETHEUS_USER}'
       password: '${GRAFANA_PROMETHEUS_PASSWORD}'
+  # Vector Metrics
+  - job_name: 'shipping_vector'
+    static_configs:
+      - targets: ['log-shipping-vector:8686']
+    scrape_interval: 10s
+     
+  - job_name: 'routing_vector'
+    static_configs:
+      - targets: ['vector-clickhouse:8687']
+    scrape_interval: 10s  

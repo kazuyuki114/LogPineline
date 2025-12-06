@@ -8,6 +8,8 @@ sources:
     session_timeout_ms: 30000
     fetch_wait_max_ms: 500
     auto_offset_reset: "earliest"
+  internal_metrics:
+    type: "internal_metrics"
 
 transforms:
   parse_kafka_message:
@@ -274,7 +276,11 @@ sinks:
       when_full: "block" 
     healthcheck:
       enabled: true
-
+  prometheus:
+    type: "prometheus_exporter"
+    inputs:
+      - "internal_metrics"
+    address: "0.0.0.0:8687"
   # print_logs:
   #   type: console
   #   inputs:
