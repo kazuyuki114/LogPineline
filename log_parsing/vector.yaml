@@ -163,10 +163,10 @@ transforms:
 
       if err == null {
         # Save metadata fields
-        _container_name = parsed_message.container_name
-        _source_type = parsed_message.source_type
-        _stream = parsed_message.stream
-        _timestamp = parsed_message.timestamp
+        _container_name = .container_name
+        _source_type = .source_type
+        _stream = .stream
+        _timestamp = .timestamp
 
         # The original logs
         . = parsed_message
